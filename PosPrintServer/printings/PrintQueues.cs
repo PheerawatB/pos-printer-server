@@ -22,8 +22,8 @@ public class PrintQueue
 
     public async void Print(IntPtr printer, PrintingQueue data)
     {
-        string mockupJson = QueueModel.CreateMockupData();
-        QueueModel q = QueueModel.FromJson(mockupJson);
+        // string mockupJson = QueueModel.CreateMockupData();
+        QueueModel q = JsonSerializer.Deserialize<QueueModel>(data.jsonData);
         DateTimeHelper dateTimeHelper = new DateTimeHelper();
 
         string imageUrl = q.ShopQ?.ImageUrl ?? "";

@@ -31,7 +31,7 @@ public class PrintBill
             IntPtr ptr = PM.GetPrinterConnection(printer.ip_address);
             ////ToDo for each receipts
             ////ToDo new modelfor one receipt
-            BillModel bill = GenerateMockBillData();
+            BillModel bill = JsonSerializer.Deserialize<BillModel>(data.jsonData);
             //var result = ParseData(bill);
 
             //Dictionary<string, JsonElement> json = GenerateMockBillData();

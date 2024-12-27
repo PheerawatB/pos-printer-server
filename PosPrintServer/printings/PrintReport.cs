@@ -75,32 +75,32 @@ public class PrintReport
         {
             //if (reportBill.shop.branch_type_id == 2)
             //{
-            //    branchName = $"{(!string.IsNullOrEmpty(reportBill.shop.branch) ? (language == "th" ? "สาขาที่ " : "Branch No. ") + reportBill.shop.branch : "")}" +
+            //    branchName = $"{(!string.IsNullOrEmpty(reportBill.shop.branch) ? (language == "th" ? "๏ฟฝาขาท๏ฟฝ๏ฟฝ " : "Branch No. ") + reportBill.shop.branch : "")}" +
             //                 $"{(reportBill.shop.branch != null && !string.IsNullOrEmpty(reportBill.shop.branch) ? " " : "")}" +
-            //                 $"{(!string.IsNullOrEmpty(reportBill.shop.branch) ? (language == "th" ? "สาขา " : "Branch ") + reportBill.shop.branch : "")} ";
+            //                 $"{(!string.IsNullOrEmpty(reportBill.shop.branch) ? (language == "th" ? "๏ฟฝาข๏ฟฝ " : "Branch ") + reportBill.shop.branch : "")} ";
             //}
             //else if (reportBill.shop.branch_type_id == 3)
             //{
             //    branchName = string.Empty;
             //}
 
-            string shopName = $"{(reportBill.language == "th" ? "ชื่อร้านอาหาร" : "Shop Name")}: {reportBill.shop.name ?? ""}";
+            string shopName = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Shop Name")}: {reportBill.shop.name ?? ""}";
             PM.PrintText(printer, shopName);
 
-            string branch = $"{(reportBill.language == "th" ? "สาขา" : "Branch")}: {reportBill.shop.branch ?? ""}";
+            string branch = $"{(reportBill.language == "th" ? "๏ฟฝาข๏ฟฝ" : "Branch")}: {reportBill.shop.branch ?? ""}";
             PM.PrintText(printer, branch);
 
-            string addr = $"{(reportBill.language == "th" ? "ที่อยู่" : "Address")}: {reportBill.shop.address ?? ""}";
+            string addr = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Address")}: {reportBill.shop.address ?? ""}";
             PM.PrintText(printer, addr);
         }
 
         //if (bill.receipt != null && bill.receipt.document_vat_type_id.HasValue && bill.receipt.document_vat_type_id != 3)
         //{
-        //    string taxNo = $"{(language == "th" ? "เลขประจำตัวผู้เสียภาษี" : "TAX ID")} {bill.shop.tax_no} ";
+        //    string taxNo = $"{(language == "th" ? "๏ฟฝลข๏ฟฝ๏ฟฝะจำต๏ฟฝวผ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "TAX ID")} {bill.shop.tax_no} ";
         //    PM.PrintText(printer, FormatText(taxNo));
         //}
         PM.NewLine(printer, 50);
-        //string tel = $"{(language == "th" ? "เบอร์โทร" : "Tel")} {bill.shop.tel ?? ""} ";
+        //string tel = $"{(language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Tel")} {bill.shop.tel ?? ""} ";
         //PM.PrintText(printer, FormatText(tel));
         //PM.NewLine(printer, 70);
     }
@@ -116,24 +116,24 @@ public class PrintReport
         if (reportBill.pos_round != null)
         {
             // POS and Work Shift Information
-            string posInfo = $"{(reportBill.language == "th" ? "ชื่อเครื่อง" : "POS Code")} : {reportBill.pos_round.pos_code} " +
-                             $"{(reportBill.language == "th" ? "รอบที่" : "Work shift")} : {reportBill.pos_round.round}";
+            string posInfo = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง" : "POS Code")} : {reportBill.pos_round.pos_code} " +
+                             $"{(reportBill.language == "th" ? "๏ฟฝอบ๏ฟฝ๏ฟฝ๏ฟฝ" : "Work shift")} : {reportBill.pos_round.round}";
             PM.PrintText(printer, posInfo);
 
             // Title
-            string title = reportBill.language == "th" ? "ใบสรุปยอดรายลิ้นชักเงินสด" : "Cash register report";
+            string title = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ้นชัก๏ฟฝินสด" : "Cash register report";
             PM.PrintText(printer, title);
 
             // Starting Date and Time
-            string startingDate = $"{(reportBill.language == "th" ? "วันที่เปิดลิ้นชักเงินสด" : "Starting date")} : " +
+            string startingDate = $"{(reportBill.language == "th" ? "๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ้นชัก๏ฟฝินสด" : "Starting date")} : " +
                                   $"{DateTime.Parse(reportBill.pos_round.open_date).ToString("dd MMMM yyyy", new System.Globalization.CultureInfo(language))} " +
-                                  $"{(reportBill.language == "th" ? "เวลา" : "time")} {reportBill.pos_round.open_time}";
+                                  $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "time")} {reportBill.pos_round.open_time}";
             PM.PrintText(printer, startingDate);
 
             // Ending Date and Time
-            string endingDate = $"{(reportBill.language == "th" ? "วันที่ปิดลิ้นชักเงินสด" : "Ending date")} : " +
+            string endingDate = $"{(reportBill.language == "th" ? "๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ้นชัก๏ฟฝินสด" : "Ending date")} : " +
                                 $"{DateTime.Parse(reportBill.pos_round.close_date).ToString("dd MMMM yyyy", new System.Globalization.CultureInfo(language))} " +
-                                $"{(reportBill.language == "th" ? "เวลา" : "time")} {reportBill.pos_round.close_time}";
+                                $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "time")} {reportBill.pos_round.close_time}";
             PM.PrintText(printer, endingDate);
         }
         else
@@ -143,14 +143,14 @@ public class PrintReport
             {
                 // Monthly Summary Report
                 MessageBox.Show("Monthly Summary Report");
-                string docDate = $"{(reportBill.language == "th" ? "ใบสรุปยอดรายเดือน" : "Summary report of monthly sales")} : {GetMonthName(reportBill.date, language)}";
+                string docDate = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน" : "Summary report of monthly sales")} : {GetMonthName(reportBill.date, language)}";
                 PM.PrintText(printer, docDate);
             }
             else
             {
                 // Daily Summary Report
                 MessageBox.Show("Daily Summary Report");
-                string docDate = $"{(reportBill.language == "th" ? "ใบสรุปยอดรายวันที่" : "Summary report of daily sales")} : " +
+                string docDate = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ" : "Summary report of daily sales")} : " +
                                  $"{DateTime.Parse(reportBill.date).ToString("dd MMMM yyyy", new System.Globalization.CultureInfo(language))}";
                 PM.PrintText(printer, docDate);
             }
@@ -175,54 +175,54 @@ public class PrintReport
         //DateTime summaryDate;
         //if (DateTime.TryParse(reportBill.summary_date, out summaryDate))
         //{
-        //    string report_name = $"{(reportBill.language == "th" ? "สรุปยอดรายได้วันที่" : "Report Summary Date")} {summaryDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo(reportBill.language == "th" ? "th-TH" : "en-US"))}";
+        //    string report_name = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ" : "Report Summary Date")} {summaryDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo(reportBill.language == "th" ? "th-TH" : "en-US"))}";
         //    PM.PrintText(printer, report_name);
         //}
         //else
         //{
-        //    // กรณีที่ไม่สามารถแปลง string เป็น DateTime ได้
+        //    // ๏ฟฝรณีท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝรถ๏ฟฝลง string ๏ฟฝ๏ฟฝ DateTime ๏ฟฝ๏ฟฝ
         //    string report_name = "Invalid date format";
         //}
         // Print Date
         lineIndex += 2;
-        string printDate = $"{(reportBill.language == "th" ? "พิมพ์เมื่อวันที่" : "Print date")} : " +
+        string printDate = $"{(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ" : "Print date")} : " +
             $"{DateTime.Now.ToString("dd MMMM yyyy HH:mm", new System.Globalization.CultureInfo(language))}" +
-            $"{(reportBill.language == "th" ? " น." : "")}";
+            $"{(reportBill.language == "th" ? " ๏ฟฝ." : "")}";
         PM.PrintText(printer, printDate);
 
         PM.NewLine(printer);
 
         // Number of Bills
         lineIndex += 4;
-        string title_bill_count_total = reportBill.language == "th" ? "จำนวนบิลทั้งหมด" : "Number of bills";
+        string title_bill_count_total = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Number of bills";
         string totalBills = reportBill.bill_count_total.ToString();
         PM.PrintTextTwoColumn(printer, title_bill_count_total, totalBills);
 
         // Number of Cancelled Receipts
         lineIndex += 2;
-        string title_cancelledBills = reportBill.language == "th" ? "จำนวนบิลยกเลิก" : "Number of cancelled receipt";
+        string title_cancelledBills = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝยก๏ฟฝ๏ฟฝิก" : "Number of cancelled receipt";
         string cancelledBills = reportBill.bill_count_cancel.ToString();
         PM.PrintTextTwoColumn(printer, title_cancelledBills, cancelledBills);
 
         // Number of Cancelled Bills (Table closed before payment)
         lineIndex += 2;
-        string title_cancelledNotBills = reportBill.language == "th" ? "จำนวนบิลที่ปิดโต๊ะก่อนชำระ" : "Number of cancelled bill";
+        string title_cancelledNotBills = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝะก๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Number of cancelled bill";
         string cancelledNotBills = reportBill.bill_count_cancel_not_bill.ToString();
         PM.PrintTextTwoColumn(printer, title_cancelledNotBills, cancelledNotBills);
 
         // Number of Cancelled Items
         lineIndex += 2;
-        string title_bill_item_count_cancel = reportBill.language == "th" ? "จำนวนรายการที่ยกเลิก" : "Number cancelled item";
+        string title_bill_item_count_cancel = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝ๏ฟฝยก๏ฟฝรท๏ฟฝ๏ฟฝยก๏ฟฝ๏ฟฝิก" : "Number cancelled item";
         string cancelledItems = reportBill.bill_item_count_cancel.ToString();
         PM.PrintTextTwoColumn(printer, title_bill_item_count_cancel, cancelledItems);
 
         // Number of Customers
         lineIndex += 2;
-        string title_bill_count_customer = reportBill.language == "th" ? "จำนวนลูกค้า" : "Number of customers";
+        string title_bill_count_customer = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝูก๏ฟฝ๏ฟฝ๏ฟฝ" : "Number of customers";
         string customerCount = reportBill.bill_count_customer.ToString();
         PM.PrintTextTwoColumn(printer, title_bill_count_customer, customerCount);
 
-        string title_normalBills = reportBill.language == "th" ? "จากจำนวนบิล" : "from Bills";
+        string title_normalBills = reportBill.language == "th" ? "๏ฟฝาก๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ" : "from Bills";
         string normalBills = reportBill.bill_count_normal.ToString();
         PM.PrintTextTwoColumn(printer, title_normalBills, normalBills);
 
@@ -231,12 +231,12 @@ public class PrintReport
 
     static void AddPromotions(IntPtr printer, Report reportBill)
     {
-        string discountTitle = reportBill.language == "th" ? "ส่วนลด" : "Sales discount";
-        string specialTitle = reportBill.language == "th" ? "ส่วนลดพิเศษ" : "Additional sales discount";
-        string freeTitle = reportBill.language == "th" ? "ฟรี" : "Discount of free items";
-        string decimalDiscountTitle = reportBill.language == "th" ? "ส่วนลดปัดเศษสตางค์" : "Discount of Round down to decimal";
-        string totalDiscountTitle = reportBill.language == "th" ? "รวมส่วนลด" : "Total sales discount";
-        string serviceTitle = reportBill.language == "th" ? "ค่าบริการ" : "Service Charge";
+        string discountTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝวนลด" : "Sales discount";
+        string specialTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝวนลด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Additional sales discount";
+        string freeTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ" : "Discount of free items";
+        string decimalDiscountTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝวนลด๏ฟฝัด๏ฟฝ๏ฟฝ๏ฟฝสตาง๏ฟฝ๏ฟฝ" : "Discount of Round down to decimal";
+        string totalDiscountTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝวนลด" : "Total sales discount";
+        string serviceTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝาบ๏ฟฝิก๏ฟฝ๏ฟฝ" : "Service Charge";
         PM.PrintTextBold(printer, discountTitle);
         double? discountSum = 0;
         foreach (var promotion in reportBill.promotions)
@@ -276,9 +276,9 @@ public class PrintReport
 
     static void AddSales(IntPtr printer, Report reportBill)
     {
-        string noVatTitle = reportBill.language == "th" ? "ยอดขายไม่รวมภาษีมูลค่าเพิ่ม" : "Pre-vat Amount";
-        string vatTitle = reportBill.language == "th" ? "ภาษีขาย" : "VAT";
-        string grandTotalTitle = reportBill.language == "th" ? "ยอดขายสุทธิ" : "Grand Total";
+        string noVatTitle = reportBill.language == "th" ? "๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลค๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Pre-vat Amount";
+        string vatTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝีข๏ฟฝ๏ฟฝ" : "VAT";
+        string grandTotalTitle = reportBill.language == "th" ? "๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุท๏ฟฝ๏ฟฝ" : "Grand Total";
         PM.PrintTextTwoColumn(printer, noVatTitle, CurrencyFormat(reportBill.receipt_total_before_vat?.ToString()));
         PM.PrintTextTwoColumn(printer, vatTitle, CurrencyFormat(reportBill.receipt_vat?.ToString()));
         PM.PrintTextTwoColumn(printer, grandTotalTitle, CurrencyFormat(reportBill.receipt_total_after_vat?.ToString()));
@@ -286,9 +286,9 @@ public class PrintReport
 
     static void AddPayments(IntPtr printer, Report reportBill)
     {
-        string paymentMethodTitle = reportBill.language == "th" ? "ช่องทางการชำระเงิน" : "Payment methods";
-        string cashTitle = reportBill.language == "th" ? "เงินสด" : "Cash";
-        string depositTitle = reportBill.language == "th" ? "เงินมัดจำ" : "Deposit";
+        string paymentMethodTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝอง๏ฟฝาง๏ฟฝ๏ฟฝรช๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน" : "Payment methods";
+        string cashTitle = reportBill.language == "th" ? "๏ฟฝินสด" : "Cash";
+        string depositTitle = reportBill.language == "th" ? "๏ฟฝิน๏ฟฝัด๏ฟฝ๏ฟฝ" : "Deposit";
 
         PM.PrintTextBold(printer, paymentMethodTitle);
         PM.PrintTextTwoColumn(printer, cashTitle, CurrencyFormat($"{reportBill.receipt_payment_cash}"));
@@ -306,15 +306,15 @@ public class PrintReport
                 sumAmount += method.amount;
             }
 
-            string payCount = $"{payCountNum} {(reportBill.language == "th" ? "ครั้ง" : "times")}";
-            string transferTitle = $"{(reportBill.language == "th" ? "เงินโอน / QR Code" : "Bank transfer")} {qr_payment.bank_short_name} {payCount}";
+            string payCount = $"{payCountNum} {(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "times")}";
+            string transferTitle = $"{(reportBill.language == "th" ? "๏ฟฝิน๏ฟฝอน / QR Code" : "Bank transfer")} {qr_payment.bank_short_name} {payCount}";
             PM.PrintTextTwoColumn(printer, transferTitle, CurrencyFormat($"{sumAmount}"));
 
             if (qr_payment.bank_account_payment_methods.Any(m => m.bank_account_payment_method_name != null))
             {
                 foreach (var method in qr_payment.bank_account_payment_methods)
                 {
-                    string methodTitle = $"{method.bank_account_payment_method_name ?? (reportBill.language == "th" ? "ไม่ระบุ" : "Not specified")} ({method.payment_count} {(reportBill.language == "th" ? "ครั้ง" : "times")})";
+                    string methodTitle = $"{method.bank_account_payment_method_name ?? (reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝะบ๏ฟฝ" : "Not specified")} ({method.payment_count} {(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "times")})";
                     PM.PrintTextTwoColumn(printer, methodTitle, CurrencyFormat($"{method.amount}"));
                 }
             }
@@ -322,28 +322,28 @@ public class PrintReport
 
         foreach (var credit_card in reportBill.receipt_payment_credit_card)
         {
-            string payCount = $"{credit_card.payment_count} {(reportBill.language == "th" ? "ครั้ง" : "times")}";
-            string creditTitle = $"{(reportBill.language == "th" ? "บัตรเครดิต" : "Credit/Debit card Bank")} {credit_card.bank_short_name} {payCount}";
+            string payCount = $"{credit_card.payment_count} {(reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "times")}";
+            string creditTitle = $"{(reportBill.language == "th" ? "๏ฟฝัต๏ฟฝ๏ฟฝรดิต" : "Credit/Debit card Bank")} {credit_card.bank_short_name} {payCount}";
             PM.PrintTextTwoColumn(printer, creditTitle, CurrencyFormat($"{credit_card.amount}"));
         }
 
-        string invoiceTitle = reportBill.language == "th" ? "เงินเชื่อ" : "On credit";
+        string invoiceTitle = reportBill.language == "th" ? "๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "On credit";
         PM.PrintTextTwoColumn(printer, invoiceTitle, CurrencyFormat($"{reportBill.invoice_total_after_vat}"));
         PM.DrawLine(printer);
 
-        string tipsTitle = reportBill.language == "th" ? "ทิป" : "Tips";
+        string tipsTitle = reportBill.language == "th" ? "๏ฟฝิป" : "Tips";
         PM.PrintTextTwoColumn(printer, tipsTitle, CurrencyFormat($"{reportBill.pos_round_close_tip_amount}"));
         PM.DrawLine(printer);
 
-        string netTitle = reportBill.language == "th" ? "ยอดขายสุทธิรวมทิป" : "Net Total";
+        string netTitle = reportBill.language == "th" ? "๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิป" : "Net Total";
         PM.PrintTextTwoColumn(printer, netTitle, CurrencyFormat($"{reportBill.invoice_total_after_vat + reportBill.pos_round_close_tip_amount}"));
     }
 
     static void AddBillings(IntPtr printer, Report reportBill)
     {
-        string billingTitle = reportBill.language == "th" ? "รายได้ ตามประเภทบิล" : "Sales report by bill type";
-        string atShopTitle = reportBill.language == "th" ? "ทานร้าน" : "Eat in";
-        string takeHomeTitle = reportBill.language == "th" ? "กลับบ้าน" : "Take home";
+        string billingTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Sales report by bill type";
+        string atShopTitle = reportBill.language == "th" ? "๏ฟฝาน๏ฟฝ๏ฟฝาน" : "Eat in";
+        string takeHomeTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝาน" : "Take home";
         PM.PrintTextBold(printer, billingTitle);
         PM.PrintTextTwoColumn(printer, atShopTitle, CurrencyFormat($"{reportBill.receipt_restuarant}"));
         PM.PrintTextTwoColumn(printer, takeHomeTitle, CurrencyFormat($"{reportBill.receipt_take_home}"));
@@ -358,14 +358,14 @@ public class PrintReport
         }
         if (reportBill.pos_round != null) 
         {
-            string initialTitle = reportBill.language == "th" ? "วงเงินสดเริ่มต้น" : "Begining balance of cash";
+            string initialTitle = reportBill.language == "th" ? "วง๏ฟฝินสด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Begining balance of cash";
             PM.PrintTextTwoColumn(printer, initialTitle, CurrencyFormat($"{reportBill.pos_round.initial_amount}"));
-            string incomeTitle = reportBill.language == "th" ? "เงินเข้า" : "Cash In";
-            string outcomeTitle = reportBill.language == "th" ? "เงินออก" : "Cash Out";
-            string registerCashTitle = reportBill.language == "th" ? "จำนวนเงินตามระบบ" : "Amount of cash receipt by register";
-            string onHandCashTitle = reportBill.language == "th" ? "จำนวนเงินที่นับได้จากลิ้นชัก" : "Amount of cash on hand";
-            string overShortTitle = reportBill.language == "th" ? "เงินเกิน / -เงินขาด" : "Over/Short of cash";
-            string depositCashTitle = reportBill.language == "th" ? "จำนวนเงิน นำฝากเงินเข้าธนาคาร" : "Amount of money deposited into the bank";
+            string incomeTitle = reportBill.language == "th" ? "๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ" : "Cash In";
+            string outcomeTitle = reportBill.language == "th" ? "๏ฟฝิน๏ฟฝอก" : "Cash Out";
+            string registerCashTitle = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝะบ๏ฟฝ" : "Amount of cash receipt by register";
+            string onHandCashTitle = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ้นชัก" : "Amount of cash on hand";
+            string overShortTitle = reportBill.language == "th" ? "๏ฟฝิน๏ฟฝิน / -๏ฟฝิน๏ฟฝาด" : "Over/Short of cash";
+            string depositCashTitle = reportBill.language == "th" ? "๏ฟฝำนวน๏ฟฝิน ๏ฟฝำฝาก๏ฟฝิน๏ฟฝ๏ฟฝาธ๏ฟฝาค๏ฟฝ๏ฟฝ" : "Amount of money deposited into the bank";
             PM.PrintText(printer, incomeTitle);
             if (reportBill.pos_round.in_pos_cash_movements != null && reportBill.pos_round.in_pos_cash_movements.Count > 0)
             {
@@ -393,8 +393,8 @@ public class PrintReport
         }
         else
         {
-            string estimatedTitle = reportBill.language == "th" ? "รายได้ประมาณการจากบิลที่ยังไม่ชำระเงิน" : "Estimated sales of unpaid bills";
-            string unpaidTitle = reportBill.language == "th" ? "บิลที่ยังไม่ชำระเงิน" : "Number of unpaid bills";
+            string estimatedTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาณ๏ฟฝ๏ฟฝรจาก๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝ๏ฟฝัง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน" : "Estimated sales of unpaid bills";
+            string unpaidTitle = reportBill.language == "th" ? "๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝ๏ฟฝัง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน" : "Number of unpaid bills";
             PM.PrintTextTwoColumn(printer, estimatedTitle, CurrencyFormat($"{reportBill.est_total_after_vat}"));
             PM.PrintTextTwoColumn(printer, unpaidTitle, CurrencyFormat($"{reportBill.count_bill_status89}"));
             PM.DrawLine(printer);
@@ -461,7 +461,7 @@ public class PrintReport
 
                     if (isShowReportByMenu && sumAmount > 0)
                     {
-                        string totalKey = (reportBill.language == "th" ? "รวม" : "Total") + prevType;
+                        string totalKey = (reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ" : "Total") + prevType;
                         items[totalKey] = new ProductItem
                         {
                             Amount = sumAmount,
@@ -500,7 +500,7 @@ public class PrintReport
 
             if (isShowReportByMenuFinal && sumAmount > 0)
             {
-                string totalKey = (reportBill.language == "th" ? "รวม" : "Total") + prevType;
+                string totalKey = (reportBill.language == "th" ? "๏ฟฝ๏ฟฝ๏ฟฝ" : "Total") + prevType;
                 items[totalKey] = new ProductItem
                 {
                     Amount = sumAmount,
@@ -528,19 +528,19 @@ public class PrintReport
             }
         }
         PM.NewLine(printer);
-        PM.PrintTextTwoColumn(printer, reportBill.language == "th" ? "ยอดขายรวม" : "Total Amount", CurrencyFormat(totalPrice.ToString()));
+        PM.PrintTextTwoColumn(printer, reportBill.language == "th" ? "๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" : "Total Amount", CurrencyFormat(totalPrice.ToString()));
         PM.NewLine(printer);
     }
 
     public static Report GenerateMockBillData()
     {
-        //ใบสรุปยอดขายรายเดือน
+        //๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน
         string json = @"
         {
           ""shop"": {
-            ""name"": ""สตรีทคอฟฟี่"",
+            ""name"": ""สต๏ฟฝีท๏ฟฝอฟ๏ฟฝ๏ฟฝ๏ฟฝ"",
             ""branch_name"": ""STREET COFFEE 3"",
-            ""address"": ""บริชัต แบงคอก เมโทร เน็ทเวิร์คส์ จำกัด สำนักงานใหญ่ เลขที่ 832 ถนนสุทธิสาร รัชดาภิเษก เขต ดินแดง กรุงเทพมหานคร 10400"",
+            ""address"": ""๏ฟฝ๏ฟฝิชัต แบง๏ฟฝอก ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำกัด ๏ฟฝำนัก๏ฟฝาน๏ฟฝหญ๏ฟฝ ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ 832 ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝัช๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝษก เขต ๏ฟฝินแดง ๏ฟฝ๏ฟฝุงเทพ๏ฟฝ๏ฟฝาน๏ฟฝ๏ฟฝ 10400"",
             ""service_charge"": 10,
             ""is_show_report_by_menu"": false,
             ""default_report_printer_id"": 5,
@@ -591,7 +591,7 @@ public class PrintReport
           ""receipt_payment_qr_code"": [
             {
               ""bank_id"": 2,
-              ""bank_name"": ""ธนาคารกสิกรไทย จำกัด (มหาชน)"",
+              ""bank_name"": ""๏ฟฝ๏ฟฝาค๏ฟฝรก๏ฟฝิก๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำกัด (๏ฟฝ๏ฟฝาช๏ฟฝ)"",
               ""bank_short_name"": ""KBANK"",
               ""bank_account_payment_methods"": [
                 {
@@ -614,13 +614,13 @@ public class PrintReport
           ""language"": ""th""
         }";
 
-        //ใบสรุปยอดขายรายวัน 
+        //๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝอด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัน 
         //string json = @"
         //{
         //  ""shop"": {
-        //    ""name"": ""สตรีทคอฟฟี่"",
+        //    ""name"": ""สต๏ฟฝีท๏ฟฝอฟ๏ฟฝ๏ฟฝ๏ฟฝ"",
         //    ""branch_name"": ""STREET COFFEE 3"",
-        //    ""address"": ""บริเวณ แบงคอก เมโทร เน็ทเวิร์คส์ จำกัด สำนักงานใหญ่ เลขที่ 832 ถนนสุทธิสาร รัชดาภิเษก เขต ดินแดง กรุงเทพมหานคร 10400"",
+        //    ""address"": ""๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝวณ แบง๏ฟฝอก ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำกัด ๏ฟฝำนัก๏ฟฝาน๏ฟฝหญ๏ฟฝ ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ 832 ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝัช๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝษก เขต ๏ฟฝินแดง ๏ฟฝ๏ฟฝุงเทพ๏ฟฝ๏ฟฝาน๏ฟฝ๏ฟฝ 10400"",
         //    ""service_charge"": 10,
         //    ""is_show_report_by_menu"": false,
         //    ""default_report_printer_id"": 5,
@@ -716,13 +716,13 @@ public class PrintReport
         //  ""language"": ""th""
         //}";
 
-        //ใบสรุปลิ้นชัก
+        //๏ฟฝ๏ฟฝ๏ฟฝุป๏ฟฝ๏ฟฝ้นชัก
         //string json = @"
         //{
         //  ""shop"": {
-        //    ""name"": ""สตรีทคอฟฟี่"",
+        //    ""name"": ""สต๏ฟฝีท๏ฟฝอฟ๏ฟฝ๏ฟฝ๏ฟฝ"",
         //    ""branch_name"": ""STREET COFFEE 3"",
-        //    ""address"": ""บริสัตย์ แบงคอก เมโทร เน็ตเวิร์คส์ จำกัด สำนักงานใหญ่ เลขที่ 832 ถนนสุทธิสาร รัชดาภิเษก เขต ดินแดง กรุงเทพมหานคร 10400"",
+        //    ""address"": ""๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัต๏ฟฝ๏ฟฝ แบง๏ฟฝอก ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำกัด ๏ฟฝำนัก๏ฟฝาน๏ฟฝหญ๏ฟฝ ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ 832 ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝัช๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝษก เขต ๏ฟฝินแดง ๏ฟฝ๏ฟฝุงเทพ๏ฟฝ๏ฟฝาน๏ฟฝ๏ฟฝ 10400"",
         //    ""service_charge"": 10,
         //    ""is_show_report_by_menu"": false,
         //    ""default_report_printer_id"": 5,
