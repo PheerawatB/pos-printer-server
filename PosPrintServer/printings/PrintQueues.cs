@@ -4,7 +4,7 @@ using PrintingModel;
 using System.Net;
 using System.Runtime.InteropServices;
 using PM = PrinterManager;
-
+using System.Text.Json;
 public class PrintQueue
 {
     public PrintQueue(PrintingQueue data) {
